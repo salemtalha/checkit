@@ -1,0 +1,19 @@
+<%- model_class = Link -%>
+<div id="container" class="js-masonry"
+    data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
+  <div id="columns">
+  <% @links.each do |link| %>
+    <% embed = Embed.get_embed(link.url) %>
+    <% puts embed %>
+    <div class="pin">
+      <img src=<%= embed.thumbnail_url %>>
+      <p>
+      <a href=<%= embed.url %>> <%= embed.title %> </a>
+      </p>
+      <span>from <%= link.sender.first_name  %></span>
+      <span>via <%= embed.provider_name %></span>
+    </div>
+  <% end %>
+  </div>
+</div>
+
